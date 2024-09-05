@@ -1,7 +1,7 @@
 $VerbosePreference = "Continue"
 # Define the source and destination paths
-$usbPath = "D:\MyWorks"  # Replace with the actual drive letter of your USB storage
-$destinationPath = "C:\AstroPhotography"
+$usbPath = "F:\MyWorks"  # Replace with the actual drive letter of your USB storage
+$destinationPath = "D:\AstroPhotography"
 
 # Create the destination directory if it doesn't exist
 if (-not (Test-Path -Path $destinationPath)) {
