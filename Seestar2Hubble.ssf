@@ -1,0 +1,47 @@
+requires 1.2.0
+
+# Graxpert crop
+
+# Graxpert Background Extraction AI
+
+# Graxpert denoise AI
+
+#Background extraction
+subsky -rbf -smooth=0.5 -samples=10
+
+#Remove green noise
+rmgreen
+
+# Split channels into Red, Green, & Blue files
+# These files are created in the working directory
+# and can be deleted when the script finishes.
+split R G B
+
+#Create the RGB composite from the split channel files
+rgbcomp -lum=R.fit R.fit R.fit G.fit
+
+# Load the completed file
+load composed_lrgb.fit
+
+#Remove green noise
+rmgreen
+
+# Starnet++ Star removal
+# https://siril.readthedocs.io/en/stable/processing/stars/starnet.html
+# The starless image is loaded on completion, and a star mask image is created in the working directory unless the optional parameter -nostarmask is provided.
+# Optionally, parameters may be passed to the command:
+#   - The option -stretch is for use with linear images and will apply a pre-stretch before running 
+#     StarNet and the inverse stretch to the generated starless and starmask images.
+#   - To improve star removal on images with very tight stars, 
+#     the parameter -upscale may be provided. This will upsample the image by a factor of 2 
+#     prior to StarNet processing and rescale it to the original size afterwards, at the 
+#     expense of more processing time.
+#   - The optional parameter -stride=value may be provided, however the author of StarNet strongly recommends that the default stride of 256 be used
+# starnet [-stretch] [-upscale] [-stride=value] [-nostarmask]
+
+starnet -stretch -upscale
+
+
+
+
+

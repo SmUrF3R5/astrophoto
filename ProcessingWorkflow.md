@@ -4,6 +4,7 @@
 # Workflow Steps
 
 - Siril - Stack photos
+    -  Seestar Preprocessing script 
 - Graxpert
     + Crop 
     + Extract Background (mess around with the different AI model versions)
